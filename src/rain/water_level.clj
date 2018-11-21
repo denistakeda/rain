@@ -95,8 +95,8 @@
     (let [shape            (get-shape-at-point landscape index)
           shape-type       (:shape shape)
           min-water-amount (get-min-water-amount shape landscape index)]
-      (cond
-        (= shape-type :glass)
+      (case shape-type
+        :glass
         (let [poured-water (min amount min-water-amount)
               water-per-column (/ poured-water (:width shape))
               left-border-index (or (:left-border-index shape) -1)
@@ -108,7 +108,7 @@
             new-landscape
             (recur new-landscape rest-water)))
 
-        (= shape-type :slope)
+        :slope
         (let [poured-water (min amount min-water-amount)
               rest-water (- amount poured-water)
               new-landscape (pour-water-at-point landscape (:slope-index shape) poured-water)]
@@ -116,7 +116,7 @@
             new-landscape
             (recur new-landscape rest-water)))
 
-        (= shape-type :hill)
+        :hill
         (let [poured-water (min (/ amount 2) min-water-amount)
               rest-water (- amount (* poured-water 2))
               new-landscape (-> landscape
