@@ -55,6 +55,7 @@ When we put water on column it behaves differently for different shape.
   - The amount of water is equal or bigger than the amount required to fill the glass. In that case we put exact amount of water required to fill the glass. After that its not glass any more. We can recalculate the shape and continue with the rest of the water. After that water is balanced.
 2. When we put some water on the `slope` the water goes down the slope and this is equal to put this water at the bottom of the slope. We can do the same calculation for this new point which balances water.
 3. When we put some water on the `hill` shape the water goes down the both slopes and this is equal to split water by two and put both halfs at the bottom to the left and to the right. After that we can balance water in this new points. After that water is balanced.
+When water goes down the slope it can go in only one direction, because water can't go up. But if it moves one direction sooner or later if meets the new wall or the end (which is infinite wall). This last shape is always `glass` and we already proved correctness for glass shape.
 
 ### Termination
 We have only finite amount of water to put in the system and hence finite amount of iterations. After the last iteration the water is fully balanced and algorithm is finished.
